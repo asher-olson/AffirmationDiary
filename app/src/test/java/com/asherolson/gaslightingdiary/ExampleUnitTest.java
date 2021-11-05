@@ -1,4 +1,4 @@
-package com.example.gaslightingdiary;
+package com.asherolson.gaslightingdiary;
 
 import org.junit.Test;
 
