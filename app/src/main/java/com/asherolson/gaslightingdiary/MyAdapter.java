@@ -4,30 +4,51 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public class MyAdapter extends BaseAdapter {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     Context mContext;
-    List<String> mList;
+    List<DiaryEntry> mList;
 
-    public MyAdapter (Context context, List<String> list) {
+    public MyAdapter (List<DiaryEntry> list, Context context) {
         mList = list;
         mContext = context;
     }
 
-    @Override
+
     public int getCount() {
         return mList.size();
     }
 
-    @Override
-    public String getItem(int position) {
+
+    public DiaryEntry getItem(int position) {
         return mList.get(position);
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
+
     }
 
     @Override
@@ -35,8 +56,13 @@ public class MyAdapter extends BaseAdapter {
         return 0;
     }
 
-    // This method is called to draw each row of the list
     @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    // This method is called to draw each row of the list
+
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // here you inflate the layout you want for the row
@@ -66,7 +92,7 @@ public class MyAdapter extends BaseAdapter {
         //return view;
     }
 
-    static class ViewHolder {
+    public static class ViewHolder {
         ImageView leftIcon;
         TextView upperLabel;
         TextView lowerLabel;
