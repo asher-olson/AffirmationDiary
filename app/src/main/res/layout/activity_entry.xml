@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_create_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a password"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/et_create_pw"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_bg"
+            android:layout_below="@+id/tv_create_pw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:inputType="textPassword"
+            android:padding="2dp">
+
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_reenter_pw"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/et_create_pw"
+            android:text="Re-enter password">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/et_reenter_pw"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_bg"
+            android:layout_below="@+id/tv_reenter_pw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="64dp"
+            android:inputType="textPassword"
+            android:padding="2dp">
+        </EditText>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/bt_set_pw"
+            android:text="OK"
+            android:layout_below="@+id/et_reenter_pw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/tv_entry_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_set_pw"
+            android:layout_centerHorizontal="true"
+            android:text="Re-enter password"
+            android:textColor="#ff0000"
+            android:visibility="invisible">
+
+        </TextView>
+
+    </RelativeLayout>
+</RelativeLayout>
