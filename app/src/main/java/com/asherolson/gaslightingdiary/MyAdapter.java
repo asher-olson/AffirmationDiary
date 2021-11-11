@@ -35,19 +35,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @NonNull
-    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
     }
 
@@ -72,16 +71,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // for each element of your list of notes, the adapter will create a row and affect the right title
 //        final TextView noteTitle= (TextView)view.findViewById(R.id.note_title);
 //        noteTitle.setText(mList.getItem(position));
-        ViewHolder holder;
+        MyViewHolder holder;
 
         if (convertView == null) { // if convertView is null
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item,
                     parent, false);
-            holder = new ViewHolder();
+            holder = new MyViewHolder();
             // initialize views
             convertView.setTag(holder);  // set tag on view
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (MyViewHolder) convertView.getTag();
             // if not null get tag
             // no need to initialize
         }
@@ -92,10 +91,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         //return view;
     }
 
-    public static class ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView leftIcon;
         TextView upperLabel;
         TextView lowerLabel;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
     }
 
 }
