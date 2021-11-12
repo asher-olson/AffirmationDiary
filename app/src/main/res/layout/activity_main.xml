@@ -9,9 +9,12 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_height="match_parent"
+            android:id="@+id/rv_diary_entries"
             android:layout_width="match_parent"
-            android:id="@+id/rv_diary_entries">
+            android:layout_height="match_parent"
+            android:isScrollContainer="true"
+            android:longClickable="true"
+            android:scrollbars="vertical">
 
         </androidx.recyclerview.widget.RecyclerView>
 
