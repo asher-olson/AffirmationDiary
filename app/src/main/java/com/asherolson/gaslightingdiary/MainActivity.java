@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         entries.add(new DiaryEntry("1<!9!8>03-12-2020<!9!8>I ate a hotdog today"));
         entries.add(new DiaryEntry("1<!9!8>06-26-2021<!9!8>I ate a burger today"));
 
+        for(int i = 0; i < 20; i++){
+            entries.add(new DiaryEntry(i + "<!9!8>12-19-2022<!9!8>I ate " + i + "burgers today"));
+        }
+
 
         mAdapter = new MyAdapter(entries, this);
         recyclerView.setAdapter(mAdapter);

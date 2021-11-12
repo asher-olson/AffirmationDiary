@@ -4,21 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_diary_entries"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:isScrollContainer="true"
-            android:longClickable="true"
-            android:scrollbars="vertical">
+            >
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </com.google.android.material.appbar.AppBarLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
