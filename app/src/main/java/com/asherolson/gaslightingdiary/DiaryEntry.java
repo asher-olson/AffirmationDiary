@@ -9,7 +9,8 @@ public class DiaryEntry {
     private final int id;
 
     public DiaryEntry(String rawText){
-        //takes a string that came from shared pref and parses into fields
+        //takes a string that came from shared pref and parses into fields,
+        //<!9!8> arbitrary separator,
         //format of string will be:
         //(int id)<!9!8>(date)<!9!8>(text)
         String[] parts = rawText.split("<!9!8>");

@@ -14,41 +14,37 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context mContext;
-    List<DiaryEntry> mList;
+    List<DiaryEntry> diaryList;
 
     public MyAdapter (List<DiaryEntry> list, Context context) {
-        mList = list;
+        diaryList = list;
         mContext = context;
     }
 
 
-    public int getCount() {
-        return mList.size();
-    }
-
-
     public DiaryEntry getItem(int position) {
-        return mList.get(position);
+        return diaryList.get(position);
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        MyViewHolder holder = new MyViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        holder.tvDate.setText(diaryList.get(position).getDate());
+        //probably better way to keep preview on 1 line but this is good for now
+        String text = diaryList.get(position).getText().substring(0, 22) + "...";
+        holder.tvPreview.setText(text);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-    }
 
     @Override
     public long getItemId(int position) {
@@ -57,47 +53,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return diaryList.size();
     }
 
-    // This method is called to draw each row of the list
-
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        // here you inflate the layout you want for the row
-        //final View view = View.inflate(mContext, R.layout.list_item, null);
-        //View view = null;
-        // you bind the layout with the content of your list
-        // for each element of your list of notes, the adapter will create a row and affect the right title
-//        final TextView noteTitle= (TextView)view.findViewById(R.id.note_title);
-//        noteTitle.setText(mList.getItem(position));
-        MyViewHolder holder;
-
-        if (convertView == null) { // if convertView is null
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item,
-                    parent, false);
-            holder = new MyViewHolder();
-            // initialize views
-            convertView.setTag(holder);  // set tag on view
-        } else {
-            holder = (MyViewHolder) convertView.getTag();
-            // if not null get tag
-            // no need to initialize
-        }
-
-        //update views here
-        return convertView;
-
-        //return view;
-    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageView leftIcon;
-        TextView upperLabel;
-        TextView lowerLabel;
+        TextView tvDate;
+        TextView tvPreview;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvDate = itemView.findViewById(R.id.tv_item_date);
+            tvPreview = itemView.findViewById(R.id.tv_item_preview);
         }
     }
 
