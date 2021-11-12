@@ -1,6 +1,7 @@
 package com.asherolson.gaslightingdiary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -45,6 +47,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             text = text.substring(0, 22) + "...";
         }
         holder.tvPreview.setText(text);
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //launch edit activity to display full contents of entry
+                Intent intent = new Intent(mContext, EditActivity.class);
+                intent.putExtra("entry_content", diaryList.get(position).getText());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
 
@@ -62,11 +74,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView tvDate;
         TextView tvPreview;
+        ConstraintLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDate = itemView.findViewById(R.id.tv_item_date);
             tvPreview = itemView.findViewById(R.id.tv_item_preview);
+            parentLayout = itemView.findViewById(R.id.list_item);
         }
     }
 

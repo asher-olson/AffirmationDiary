@@ -2,7 +2,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#3a77e0">
 
 
 
@@ -16,14 +17,14 @@
         </androidx.recyclerview.widget.RecyclerView>
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/add_item"
-        android:src="@drawable/ic_add"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add_item"
+        android:src="@drawable/ic_add">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
