@@ -41,7 +41,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tvDate.setText(diaryList.get(position).getDate());
         //probably better way to keep preview on 1 line but this is good for now
-        String text = diaryList.get(position).getText().substring(0, 22) + "...";
+        String text = diaryList.get(position).getText();
+        if(text.length() >= 23){
+            text = text.substring(0, 22) + "...";
+        }
         holder.tvPreview.setText(text);
     }
 
