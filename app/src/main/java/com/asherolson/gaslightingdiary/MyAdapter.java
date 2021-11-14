@@ -54,6 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 //launch edit activity to display full contents of entry
                 Intent intent = new Intent(mContext, EditActivity.class);
                 intent.putExtra("entry_content", diaryList.get(position).getText());
+                intent.putExtra("entry_id", diaryList.get(position).getId());
                 mContext.startActivity(intent);
             }
         });

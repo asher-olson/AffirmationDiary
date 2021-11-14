@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EditActivity extends AppCompatActivity {
     private EditText etEntry;
     private Button btSave;
+    private int id;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,19 +27,19 @@ public class EditActivity extends AppCompatActivity {
         btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save text entry into shared pref
-
-
-                //go to main activity
+                //pass new text and id back to main activity
                 Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                intent.putExtra("new_entry_content", etEntry.getText().toString());
+                intent.putExtra("entry_id", id);
                 startActivity(intent);
             }
         });
     }
 
     private void getIncomingIntent(){
-        if(getIntent().hasExtra("entry_content")){
+        if(getIntent().hasExtra("entry_content") && getIntent().hasExtra("entry_id")){
             etEntry.setText(getIntent().getStringExtra("entry_content"));
+            id = getIntent().getIntExtra("entry_id", -1);
         }
     }
 }

@@ -4,9 +4,9 @@ public class DiaryEntry {
 
 
 
-    private final String text;
-    private final String date;
-    private final int id;
+    private String text;
+    private String date;
+    private int id;
 
     public DiaryEntry(String rawText){
         //takes a string that came from shared pref and parses into fields,
@@ -19,6 +19,12 @@ public class DiaryEntry {
         text = parts[2];
     }
 
+    public DiaryEntry(){
+        text = "";
+        date = "";
+        id = -1;
+    }
+
     public String getDate() {
         return date;
     }
@@ -29,6 +35,18 @@ public class DiaryEntry {
 
     public String getText() {
         return text;
+    }
+
+    public void setText(String text){
+        this.text = text;
+    }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
 }
