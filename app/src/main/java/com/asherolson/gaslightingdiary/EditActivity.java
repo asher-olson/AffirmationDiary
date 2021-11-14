@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
     private EditText etEntry;
-    private Button btSave;
+    private Button btSave, btCancel;
     private int id;
 
     @Override
@@ -21,6 +21,7 @@ public class EditActivity extends AppCompatActivity {
 
         etEntry = (EditText) findViewById(R.id.et_entry_content);
         btSave = (Button) findViewById(R.id.bt_save_entry);
+        btCancel = (Button) findViewById(R.id.bt_cancel_entry);
 
         getIncomingIntent();
 
@@ -31,6 +32,15 @@ public class EditActivity extends AppCompatActivity {
                 Intent intent = new Intent(EditActivity.this, MainActivity.class);
                 intent.putExtra("new_entry_content", etEntry.getText().toString());
                 intent.putExtra("entry_id", id);
+                startActivity(intent);
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //just go back to main activity without extras
+                Intent intent = new Intent(EditActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

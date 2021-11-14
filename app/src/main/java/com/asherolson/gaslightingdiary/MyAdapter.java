@@ -43,9 +43,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.tvDate.setText(diaryList.get(position).getDate());
         //probably better way to keep preview on 1 line but this is good for now
         String text = diaryList.get(position).getText();
-        if(text.length() >= 23){
-            text = text.substring(0, 22) + "...";
-        }
+//        if(text.length() >= 23){
+//            text = text.substring(0, 22) + "...";
+//        }
         holder.tvPreview.setText(text);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {

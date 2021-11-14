@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //generate date for new entry
                 LocalDate date = LocalDate.now();
-                String dateString = date.getMonth() + "-" + date.getDayOfMonth() + "-" + date.getYear();
+                String dateString = date.getMonthValue() + "-" + date.getDayOfMonth() + "-" + date.getYear();
 
                 entry.setDate(dateString);
                 entry.setId(getIntent().getIntExtra("entry_id", -1));
