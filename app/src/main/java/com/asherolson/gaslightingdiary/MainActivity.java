@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         entries = new ArrayList<DiaryEntry>();
 
         readEntriesFromSharedPref();
+
+        Collections.sort(entries);
 
 //        entries.add(new DiaryEntry("1<!9!8>03-12-2020<!9!8>I ate a hotdog today"));
 //        entries.add(new DiaryEntry("1<!9!8>06-26-2021<!9!8>I ate a burger today"));

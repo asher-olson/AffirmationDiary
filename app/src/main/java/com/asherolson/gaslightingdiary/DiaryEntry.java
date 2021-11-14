@@ -1,6 +1,6 @@
 package com.asherolson.gaslightingdiary;
 
-public class DiaryEntry {
+public class DiaryEntry implements Comparable<DiaryEntry>{
 
 
 
@@ -54,4 +54,11 @@ public class DiaryEntry {
         this.id = id;
     }
 
+    @Override
+    public int compareTo(DiaryEntry other) {
+        if(this.id < other.getId()){
+            return -1;
+        }
+        return 1;
+    }
 }
