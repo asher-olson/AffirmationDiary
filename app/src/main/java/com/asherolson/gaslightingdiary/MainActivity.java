@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabAdd;
     private List<DiaryEntry> entries;
     private SharedPreferences sharedPref;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        sharedPref = getApplicationContext().getSharedPreferences("diary-values", 0);
+        context = getApplicationContext();
+
+        sharedPref = context.getSharedPreferences("diary-values", 0);
 
         entries = new ArrayList<DiaryEntry>();
 
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //get next id from shared pref and launch empty edit activity
-                Context context = getApplicationContext();
                 Intent intent = new Intent(context, EditActivity.class);
 
                 int nextId = sharedPref.getInt("next-id", 0);
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putInt("next-id", (nextId + 1));
                 editor.apply();
 
-                context.startActivity(intent);
+                startActivity(intent);
             }
         });
 

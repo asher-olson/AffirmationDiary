@@ -16,7 +16,12 @@ public class DiaryEntry {
         String[] parts = rawText.split("<!9!8>");
         id = Integer.parseInt(parts[0]);
         date = parts[1];
-        text = parts[2];
+        if(parts.length > 2){
+            text = parts[2];
+        } else {
+            text = "";
+        }
+
     }
 
     public DiaryEntry(){
