@@ -24,11 +24,11 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private static RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private FloatingActionButton fabAdd;
-    private List<DiaryEntry> entries;
-    private SharedPreferences sharedPref;
+    private static List<DiaryEntry> entries;
+    private static SharedPreferences sharedPref;
     private Context context;
 
     @Override
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void saveEntries(){
+    private static void saveEntries(){
         SharedPreferences.Editor editor = sharedPref.edit();
 
         //get all entries, convert to strings, put in sharedPref
@@ -135,12 +135,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private DiaryEntry getEntryById(int id){
+    private static DiaryEntry getEntryById(int id){
         for(DiaryEntry entry: entries){
             if(entry.getId() == id){
                 return entry;
             }
         }
         return null;
+    }
+
+    public static void deleteEntry(int id){
+        //delete entry with id from entries
+        DiaryEntry entry = getEntryById(id);
+        entries.remove(entry);
+        saveEntries();
+        mAdapter.notifyDataSetChanged();
     }
 }

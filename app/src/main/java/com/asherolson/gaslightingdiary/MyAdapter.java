@@ -58,6 +58,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 mContext.startActivity(intent);
             }
         });
+
+        holder.parentLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                MainActivity.deleteEntry(diaryList.get(position).getId());
+                return false;
+            }
+        });
     }
 
 
