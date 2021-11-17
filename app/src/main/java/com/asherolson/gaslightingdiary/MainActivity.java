@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,7 +20,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
     private static List<DiaryEntry> entries;
     private static SharedPreferences sharedPref;
     private Context context;
+    private boolean affirmationsStarted = false;
+    private ScheduledFuture<?> affirmationHandle;
+    private final ScheduledExecutorService scheduler =
+            Executors.newScheduledThreadPool(1);
+    //private Thread affirmationThread;
+
+    private final String[] AFFIRMATIONS = new String[] {
+            "You will not be robbed at gunpoint",
+            "You are the goat"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
         readEntriesFromSharedPref();
 
         Collections.sort(entries);
+
+        if(!affirmationsStarted){
+            startAffirmations();
+//            AffirmationToastThread obj = new AffirmationToastThread();
+//            affirmationThread = new Thread(obj);
+//            affirmationThread.start();
+            affirmationsStarted = true;
+        }
 
 //        entries.add(new DiaryEntry("1<!9!8>03-12-2020<!9!8>I ate a hotdog today"));
 //        entries.add(new DiaryEntry("1<!9!8>06-26-2021<!9!8>I ate a burger today"));
@@ -151,4 +175,18 @@ public class MainActivity extends AppCompatActivity {
         saveEntries();
         mAdapter.notifyDataSetChanged();
     }
+
+    private void startAffirmations(){
+        Runnable toaster = new Runnable() {
+            @Override
+            public void run() {
+                //get a random affirmation and toast it
+                Random rand = new Random();
+                int ind = rand.nextInt(AFFIRMATIONS.length);
+                Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+            }
+        };
+        affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 5, 5, TimeUnit.SECONDS);
+    }
+
 }
