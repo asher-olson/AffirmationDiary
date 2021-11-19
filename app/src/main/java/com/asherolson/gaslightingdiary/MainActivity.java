@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Collections.sort(entries);
 
         if(!affirmationsStarted){
+            System.out.println("------------starting affirmations----------------");
             startAffirmations();
 //            AffirmationToastThread obj = new AffirmationToastThread();
 //            affirmationThread = new Thread(obj);
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //get a random affirmation and toast it
+                System.out.println("time to toast");
                 Random rand = new Random();
                 int ind = rand.nextInt(AFFIRMATIONS.length);
                 Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();

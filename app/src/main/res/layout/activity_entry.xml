@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +20,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="80dp"
+            android:textColor="@color/black">
 
         </TextView>
 
@@ -33,7 +35,9 @@
             android:layout_marginBottom="32dp"
             android:inputType="textPassword"
             android:paddingVertical="4dp"
-            android:paddingHorizontal="6dp">
+            android:paddingHorizontal="6dp"
+            android:textColor="@color/black"
+            >
 
         </EditText>
 
@@ -43,7 +47,8 @@
             android:id="@+id/tv_reenter_pw"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/et_create_pw"
-            android:text="Re-enter password">
+            android:text="Re-enter password"
+            android:textColor="@color/black">
 
         </TextView>
 
@@ -57,7 +62,8 @@
             android:layout_marginBottom="64dp"
             android:inputType="textPassword"
             android:paddingVertical="4dp"
-            android:paddingHorizontal="6dp">
+            android:paddingHorizontal="6dp"
+            android:textColor="@color/black">
         </EditText>
 
         <Button

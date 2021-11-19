@@ -9,7 +9,8 @@
     android:background="@drawable/list_item_bg"
     android:paddingHorizontal="8dp"
     android:paddingVertical="12dp"
-    android:id="@+id/list_item">
+    android:id="@+id/list_item"
+    android:alpha=".83">
 
     <TextView
         android:id="@+id/tv_item_date"
