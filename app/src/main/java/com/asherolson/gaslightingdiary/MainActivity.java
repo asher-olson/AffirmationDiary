@@ -43,8 +43,24 @@ public class MainActivity extends AppCompatActivity {
     //private Thread affirmationThread;
 
     private final String[] AFFIRMATIONS = new String[] {
-            "You will not be robbed at gunpoint",
-            "You are the goat"
+            "I will not be robbed at gunpoint",
+            "I are the goat",
+            "I will not die while scrolling",
+            "I will not collapse while working out",
+            "I will not suddenly pass out",
+            "Mentally, I'm not insanely stupid",
+            "Covid has not ruined my life",
+            "I will not die poor and alone",
+            "Humanity is not doomed",
+            "I am treating my anxiety with sugar",
+            "I am not a saint and that's okay",
+            "I have not been acting weird lately",
+            "Love is not torture",
+            "I did not cause my parent's divorce",
+            "Having fun is not an impossible task",
+            "Life is not a nightmare",
+            "Eye contact is not scary",
+            "I will party, I will not cry"
     };
 
     @Override
@@ -69,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         readEntriesFromSharedPref();
 
         Collections.sort(entries);
+
+        Toast.makeText(context, AFFIRMATIONS[6], Toast.LENGTH_LONG).show();
 
         if(!affirmationsStarted){
             System.out.println("------------starting affirmations----------------");
