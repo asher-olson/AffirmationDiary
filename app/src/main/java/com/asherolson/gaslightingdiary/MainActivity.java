@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,30 +95,48 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("------------starting affirmations----------------");
 //            ScheduledExecutorService scheduler =
 //                    Executors.newSingleThreadScheduledExecutor();
-            Timer t = new Timer();
+//            Timer t = new Timer();
+//
+//            Looper.prepare();
+//
+//
+//            TimerTask task = new TimerTask() {
+//                @Override
+//                public void run() {
+//                    //get a random affirmation and toast it
+//                    System.out.println("time to toast");
+//                    Random rand = new Random();
+//                    int ind = rand.nextInt(AFFIRMATIONS.length);
+//                    System.out.println("" + ind);
+//                    Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+//                }
+//            };
+//
+////            Runnable toaster = new Runnable() {
+////                @Override
+////                public void run() {
+////
+////                }
+////            };
+//            t.scheduleAtFixedRate(task, 0, 5 * 1000);
 
-            Looper.prepare();
+                final Handler handler= new Handler();
+                handler.postDelayed(new Runnable(){
 
-
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    //get a random affirmation and toast it
-                    System.out.println("time to toast");
-                    Random rand = new Random();
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        //Toast.makeText(context, text, duration).show();
+                        Random rand = new Random();
                     int ind = rand.nextInt(AFFIRMATIONS.length);
                     System.out.println("" + ind);
                     Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-                }
-            };
+                        handler.postDelayed(this, 3000);
+                    }
 
-//            Runnable toaster = new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                }
-//            };
-            t.scheduleAtFixedRate(task, 0, 5 * 1000);
+                }, 3000);
+
+
             //affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
             //startAffirmations();
 //            AffirmationToastThread obj = new AffirmationToastThread();
