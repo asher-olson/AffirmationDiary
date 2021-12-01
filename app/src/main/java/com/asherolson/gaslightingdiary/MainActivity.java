@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private static List<DiaryEntry> entries;
     private static SharedPreferences sharedPref;
     private Context context;
-    private boolean affirmationsStarted = false;
-    private ScheduledFuture<?> affirmationHandle;
 
     //private Thread affirmationThread;
 
@@ -88,54 +86,6 @@ public class MainActivity extends AppCompatActivity {
         readEntriesFromSharedPref();
 
         Collections.sort(entries);
-
-        if(!affirmationsStarted){
-            System.out.println("------------starting affirmations----------------");
-//            ScheduledExecutorService scheduler =
-//                    Executors.newSingleThreadScheduledExecutor();
-//            Timer t = new Timer();
-//
-//            Looper.prepare();
-//
-//
-//            TimerTask task = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    //get a random affirmation and toast it
-//                    System.out.println("time to toast");
-//                    Random rand = new Random();
-//                    int ind = rand.nextInt(AFFIRMATIONS.length);
-//                    System.out.println("" + ind);
-//                    Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-//                }
-//            };
-//
-////            Runnable toaster = new Runnable() {
-////                @Override
-////                public void run() {
-////
-////                }
-////            };
-//            t.scheduleAtFixedRate(task, 0, 5 * 1000);
-
-
-
-
-            //affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
-            //startAffirmations();
-//            AffirmationToastThread obj = new AffirmationToastThread();
-//            affirmationThread = new Thread(obj);
-//            affirmationThread.start();
-            affirmationsStarted = true;
-        }
-
-//        entries.add(new DiaryEntry("1<!9!8>03-12-2020<!9!8>I ate a hotdog today"));
-//        entries.add(new DiaryEntry("1<!9!8>06-26-2021<!9!8>I ate a burger today"));
-//
-//        for(int i = 0; i < 20; i++){
-//            entries.add(new DiaryEntry(i + "<!9!8>12-19-2022<!9!8>I ate " + i + "burgers today"));
-//        }
-
 
         mAdapter = new MyAdapter(entries, this);
         recyclerView.setAdapter(mAdapter);
@@ -227,21 +177,5 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-//    private void startAffirmations(){
-//        ScheduledExecutorService scheduler =
-//                Executors.newSingleThreadScheduledExecutor();
-//
-//        Runnable toaster = new Runnable() {
-//            @Override
-//            public void run() {
-//                //get a random affirmation and toast it
-//                System.out.println("time to toast");
-//                Random rand = new Random();
-//                int ind = rand.nextInt(AFFIRMATIONS.length);
-//                Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-//            }
-//        };
-//        affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
-//    }
 
 }
