@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,8 +23,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingVertical="4dp"
-        android:paddingHorizontal="6dp"/>
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="8dp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textView"
@@ -38,7 +44,8 @@
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_login_display_msg"
@@ -54,3 +61,4 @@
 
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

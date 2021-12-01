@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/white"
+    android:background="#feffa0"
     >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:background="#feffa0"
         >
 
 
@@ -34,8 +35,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
             android:inputType="textPassword"
-            android:paddingVertical="4dp"
-            android:paddingHorizontal="6dp"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
             android:textColor="@color/black"
             >
 
@@ -61,8 +62,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="64dp"
             android:inputType="textPassword"
-            android:paddingVertical="4dp"
-            android:paddingHorizontal="6dp"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
             android:textColor="@color/black">
         </EditText>
 
