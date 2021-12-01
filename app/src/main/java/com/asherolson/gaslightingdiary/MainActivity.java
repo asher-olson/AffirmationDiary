@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -38,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private boolean affirmationsStarted = false;
     private ScheduledFuture<?> affirmationHandle;
-    private final ScheduledExecutorService scheduler =
-            Executors.newScheduledThreadPool(1);
+
     //private Thread affirmationThread;
 
     private final String[] AFFIRMATIONS = new String[] {
@@ -90,7 +92,34 @@ public class MainActivity extends AppCompatActivity {
 
         if(!affirmationsStarted){
             System.out.println("------------starting affirmations----------------");
-            startAffirmations();
+//            ScheduledExecutorService scheduler =
+//                    Executors.newSingleThreadScheduledExecutor();
+            Timer t = new Timer();
+
+            Looper.prepare();
+
+
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    //get a random affirmation and toast it
+                    System.out.println("time to toast");
+                    Random rand = new Random();
+                    int ind = rand.nextInt(AFFIRMATIONS.length);
+                    System.out.println("" + ind);
+                    Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+                }
+            };
+
+//            Runnable toaster = new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                }
+//            };
+            t.scheduleAtFixedRate(task, 0, 5 * 1000);
+            //affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
+            //startAffirmations();
 //            AffirmationToastThread obj = new AffirmationToastThread();
 //            affirmationThread = new Thread(obj);
 //            affirmationThread.start();
@@ -195,18 +224,21 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void startAffirmations(){
-        Runnable toaster = new Runnable() {
-            @Override
-            public void run() {
-                //get a random affirmation and toast it
-                System.out.println("time to toast");
-                Random rand = new Random();
-                int ind = rand.nextInt(AFFIRMATIONS.length);
-                Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-            }
-        };
-        affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 5, 5, TimeUnit.SECONDS);
-    }
+//    private void startAffirmations(){
+//        ScheduledExecutorService scheduler =
+//                Executors.newSingleThreadScheduledExecutor();
+//
+//        Runnable toaster = new Runnable() {
+//            @Override
+//            public void run() {
+//                //get a random affirmation and toast it
+//                System.out.println("time to toast");
+//                Random rand = new Random();
+//                int ind = rand.nextInt(AFFIRMATIONS.length);
+//                Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+//            }
+//        };
+//        affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
+//    }
 
 }
