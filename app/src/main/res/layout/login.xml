@@ -34,7 +34,8 @@
         android:text="Password:"
         app:layout_constraintBottom_toTopOf="@+id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/bt_login"
