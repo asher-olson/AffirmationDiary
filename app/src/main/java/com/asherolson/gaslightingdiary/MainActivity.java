@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         Collections.sort(entries);
 
-        Toast.makeText(context, AFFIRMATIONS[6], Toast.LENGTH_LONG).show();
-
         if(!affirmationsStarted){
             System.out.println("------------starting affirmations----------------");
 //            ScheduledExecutorService scheduler =
