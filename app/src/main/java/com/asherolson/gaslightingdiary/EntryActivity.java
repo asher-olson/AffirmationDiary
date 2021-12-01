@@ -3,12 +3,16 @@ package com.asherolson.gaslightingdiary;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 public class EntryActivity extends AppCompatActivity {
 
@@ -60,6 +64,22 @@ public class EntryActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString("password", original);
                     editor.apply();
+
+                    //start affirmation thread, do it here so it only happens once
+                    final Handler handler= new Handler();
+                    handler.postDelayed(new Runnable(){
+
+                        @Override
+                        public void run() {
+
+                            Random rand = new Random();
+                            int ind = rand.nextInt(MainActivity.AFFIRMATIONS.length);
+                            System.out.println("" + ind);
+                            Toast.makeText(getApplicationContext(), MainActivity.AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+                            handler.postDelayed(this, 5 * 1000);
+                        }
+
+                    }, 3000);
 
                     Intent intent = new Intent(EntryActivity.this, MainActivity.class);
                     startActivity(intent);

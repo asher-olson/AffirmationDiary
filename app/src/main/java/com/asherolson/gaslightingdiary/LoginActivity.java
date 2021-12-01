@@ -4,12 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,6 +42,22 @@ public class LoginActivity extends AppCompatActivity {
                 String compare = sharedPref.getString("password", "");
 
                 if(pw.equals(compare)){
+                    //start affirmation thread, do it here so it only happens once
+                    final Handler handler= new Handler();
+                    handler.postDelayed(new Runnable(){
+
+                        @Override
+                        public void run() {
+
+                            Random rand = new Random();
+                            int ind = rand.nextInt(MainActivity.AFFIRMATIONS.length);
+                            System.out.println("" + ind);
+                            Toast.makeText(context, MainActivity.AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
+                            handler.postDelayed(this, 5 * 1000);
+                        }
+
+                    }, 3000);
+
                     //go to main activity
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);

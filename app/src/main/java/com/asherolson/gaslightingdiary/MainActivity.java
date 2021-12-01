@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private Thread affirmationThread;
 
-    private final String[] AFFIRMATIONS = new String[] {
+    public static final String[] AFFIRMATIONS = new String[] {
             "I will not be robbed at gunpoint",
             "I are the goat",
             "I will not die while scrolling",
@@ -120,21 +120,7 @@ public class MainActivity extends AppCompatActivity {
 ////            };
 //            t.scheduleAtFixedRate(task, 0, 5 * 1000);
 
-                final Handler handler= new Handler();
-                handler.postDelayed(new Runnable(){
 
-                    @Override
-                    public void run() {
-                        // TODO Auto-generated method stub
-                        //Toast.makeText(context, text, duration).show();
-                        Random rand = new Random();
-                    int ind = rand.nextInt(AFFIRMATIONS.length);
-                    System.out.println("" + ind);
-                    Toast.makeText(context, AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-                        handler.postDelayed(this, 3000);
-                    }
-
-                }, 3000);
 
 
             //affirmationHandle = scheduler.scheduleAtFixedRate(toaster, 2, 5, TimeUnit.SECONDS);
