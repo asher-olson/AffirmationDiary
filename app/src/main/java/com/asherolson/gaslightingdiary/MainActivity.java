@@ -61,7 +61,26 @@ public class MainActivity extends AppCompatActivity {
             "Having fun is not an impossible task",
             "Life is not a nightmare",
             "Eye contact is not scary",
-            "I will party, I will not cry"
+            "I will party, I will not cry",
+            "I did not just spend the entire weekend in bed",
+            "I can trick my brain into feeling good",
+            "I won't do stupid shit just to feel something",
+            "I will not smash my head into the wall",
+            "People do not generally avoid me",
+            "Making money is so easy in 2022",
+            "My brain is not seriously ill",
+            "I am sleep before 3am",
+            "The news are not driving me crazy",
+            "I will not get nuked",
+            "I am not crazy the world is crazy",
+            "I am not toxic and unstable",
+            "My brain can function despite climate change",
+            "Our society is not fake and full of trash",
+            "I do not suck at life",
+            "The grocery store is a safe and predictable environment",
+            "I am not panicking over a mistake that I did years ago",
+            "Eye contact does not feel intense adn weird",
+            "I will behave normally in 2022"
     };
 
     @Override

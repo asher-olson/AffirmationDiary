@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,8 +53,10 @@ public class LoginActivity extends AppCompatActivity {
                             Random rand = new Random();
                             int ind = rand.nextInt(MainActivity.AFFIRMATIONS.length);
                             System.out.println("" + ind);
-                            Toast.makeText(context, MainActivity.AFFIRMATIONS[ind], Toast.LENGTH_LONG).show();
-                            handler.postDelayed(this, 5 * 1000);
+                            Toast toast = Toast.makeText(context, MainActivity.AFFIRMATIONS[ind], Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.TOP, 0, 0);
+                            toast.show();
+                            handler.postDelayed(this, 7 * 1000);
                         }
 
                     }, 3000);
